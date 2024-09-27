@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인도네시아 목장</title>
+    <!-- 구글 폰트 나눔고딕 링크 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        /* 전체적으로 폰트 나눔고딕 적용 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 폰트 적용 */
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #de4d3a; /* 연한 빨간색 */
+            height: 8vh; /* 화면 높이의 1/8 */
+            display: flex;
+            align-items: center;
+            justify-content: space-around; /* 가로로 일정한 간격 */
+            font-size: 2vw; /* 글씨 크기: 화면 너비에 따라 조정됨 */
+        }
+
+        /* 로고 이미지 스타일 */
+        .navbar .logo-link img {
+            height: 6vh; /* 높이는 화면 높이에 따라 조정 */
+        }
+
+        /* 네비게이션 링크 스타일 */
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            margin: 0 15px;
+            font-weight: bold; /* 텍스트를 굵게 */
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* VIP/목장 기도제목 두 줄 처리 */
+        .navbar .two-line {
+            display: inline-block;
+            text-align: center; /* 텍스트를 중앙 정렬 */
+            line-height: 1.2; /* 줄 간격을 조정 */
+        }
+
+        /* 메인 이미지 스타일 */
+        img {
+            max-width: 100%; /* 이미지가 화면 너비를 넘지 않도록 설정 */
+            height: auto; /* 이미지 비율을 유지하면서 크기 조정 */
+        }
+
+        /* 텍스트 가운데 정렬 */
+        .center-text {
+            text-align: center; /* 텍스트를 가운데 정렬 */
+            margin-top: 20px; /* 상단에 약간의 여백 추가 */
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background-color: #333; /* 푸터 배경색: 어두운 회색 */
+            color: white; /* 푸터 텍스트 색상: 흰색 */
+            text-align: center; /* 가운데 정렬 */
+            padding: 20px 0; /* 상하 여백 */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #de4d3a; /* 링크 색상: 연한 빨간색 */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 미디어 쿼리: 화면 너비가 600px 이하인 경우 (모바일) */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: row; /* 모바일에서도 가로 배치 */
+                flex-wrap: wrap; /* 화면에 맞게 네비게이션 항목 줄바꿈 */
+                font-size: 4vw; /* 모바일에서는 더 큰 글자 크기 */
+            }
+
+            .navbar a {
+                margin: 10px 0; /* 링크 사이 간격을 더 넓힘 */
+            }
+
+            footer p {
+                font-size: 0.9em; /* 모바일에서 푸터 글자 크기 약간 축소 */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 네비게이션 바 -->
+<div class="navbar">
+    <!-- 로고 이미지가 메인 페이지로 이동하게 설정 -->
+    <a th:href="@{/home}" class="logo-link">
+        <img th:src="@{/images/logo.jpg}" alt="로고"> <!-- 타임리프 경로로 이미지 로드 -->
+    </a>
+    <a th:href="@{/role}">목장규칙</a>
+    <a th:href="@{/column}">칼럼</a>
+    <a th:href="@{/advertisement}">광고</a>
+    <a th:href="@{/prayer}" class="two-line">지난 주<br>기도제목</a>
+</div>
+
+<!-- 텍스트를 가운데 정렬 -->
+<div class="center-text">
+    <h3>인도네시아 목장에 오신 것을 환영합니다</h3>
+    <h4>인도네시아 목장은 인도네시아 메단 지역에 계시는 박철수 선교사님을 섬기는 목장이며,
+        현재 여러 연령층(20~30대)이 속해 있는 청년을 섬기는 목장입니다.</h4>
+    <h5>목자 : 박도빈</h5>
+    <h5>목원 : 허준영, 손진관, 최현진, 박지은, 권해빈, 이종민, 윤강현, 정석교, 강다현</h5>
+</div>
+
+<!-- 메인 이미지 -->
+<div>
+    <img th:src="@{/images/main.jpg}" alt="메인사진"> <!-- 타임리프 경로로 이미지 로드 -->
+</div>
+
+<!-- 푸터 영역 -->
+<footer>
+    <p>© 2024 인도네시아 목장. All rights reserved.</p>
+    <p><a href="#privacy">개인정보 보호정책</a> | <a href="#terms">이용 약관</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목장 기도제목</title>
+    <!-- 구글 폰트 나눔고딕 링크 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        /* 전체적으로 폰트 나눔고딕 적용 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 폰트 적용 */
+        }
+
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            background-color: #de4d3a; /* 연한 빨간색 */
+            height: 8vh; /* 화면 높이의 1/8 */
+            display: flex;
+            align-items: center;
+            justify-content: space-around; /* 가로로 일정한 간격 */
+            font-size: 2vw; /* 글씨 크기: 화면 너비에 따라 조정됨 */
+        }
+
+        /* 로고 이미지 스타일 */
+        .navbar .logo-link img {
+            height: 6vh; /* 높이는 화면 높이에 따라 조정 */
+        }
+
+        /* 네비게이션 링크 스타일 */
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            margin: 0 15px;
+            font-weight: bold; /* 텍스트를 굵게 */
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* VIP/목장 기도제목 두 줄 처리 */
+        .navbar .two-line {
+            display: inline-block;
+            text-align: center; /* 텍스트를 중앙 정렬 */
+            line-height: 1.2; /* 줄 간격을 조정 */
+        }
+
+        /* 메인 이미지 스타일 */
+        img {
+            max-width: 100%; /* 이미지가 화면 너비를 넘지 않도록 설정 */
+            height: auto; /* 이미지 비율을 유지하면서 크기 조정 */
+        }
+
+        /* 텍스트 가운데 정렬 */
+        .center-text {
+            text-align: center; /* 텍스트를 가운데 정렬 */
+            margin-top: 20px; /* 상단에 약간의 여백 추가 */
+        }
+
+         pre {
+            white-space: pre-wrap; /* 긴 텍스트가 화면 너비에 맞게 줄바꿈 */
+            word-wrap: break-word;  /* 긴 단어도 자동 줄바꿈 */
+            font-size: 1.0rem; /* 텍스트 크기 조정 */
+            line-height: 1.8; /* 읽기 편하게 줄 간격 조정 */
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background-color: #333; /* 푸터 배경색: 어두운 회색 */
+            color: white; /* 푸터 텍스트 색상: 흰색 */
+            text-align: center; /* 가운데 정렬 */
+            padding: 20px 0; /* 상하 여백 */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #de4d3a; /* 링크 색상: 연한 빨간색 */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 미디어 쿼리: 화면 너비가 600px 이하인 경우 (모바일) */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: row; /* 모바일에서도 가로 배치 */
+                flex-wrap: wrap; /* 화면에 맞게 네비게이션 항목 줄바꿈 */
+                font-size: 4vw; /* 모바일에서는 더 큰 글자 크기 */
+            }
+
+            .navbar a {
+                margin: 10px 0; /* 링크 사이 간격을 더 넓힘 */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 네비게이션 바 -->
+<div class="navbar">
+    <!-- 로고 이미지가 메인 페이지로 이동하게 설정 -->
+    <a th:href="@{/home}" class="logo-link">
+        <img th:src="@{/images/logo.jpg}" alt="로고"> <!-- 타임리프 경로로 이미지 로드 -->
+    </a>
+    <a th:href="@{/role}">목장규칙</a>
+    <a th:href="@{/column}">칼럼</a>
+    <a th:href="@{/advertisement}">광고</a>
+    <a th:href="@{/prayer}" class="two-line">지난 주<br>기도제목</a>
+</div>
+
+<!-- 텍스트를 가운데 정렬 -->
+<div class="center-text">
+    <h3>목장 기도제목</h3>
+</div>
+<pre>
+박도빈 목자님
+1. 교통사고 합의를 아직까지 못하고 있는데 잘 해결될 수 있게
+2. 급여가 3개월째 밀리고 있는데 회사 사정이 좋아질 수 있게
+3. 취업준비하고 있는 가운데 기도하며 준비할 수 있게
+4. 목장식구들을 위해 기도하고 있는데 기도하는 모습을 직접적으로 보여주고 믿음의 본보기가 되는 목자가 될 수 있게
+
+허준영 형제님
+1. 결혼 준비와 업무적으로 계속 바쁜 가운데 힘들지 않고 잘 감당할 수 있게
+2. 신혼집 인테리어하게 되는데 기간내에(추석기간 감안하여) 하자없이 잘 마무리될 수 있게
+3. 커플의 삶 내일이 마지막 주차인데 끝까지 승리할 수 있게
+4. 일하는데 실수하지 않고 정신적인 스트레스를 받지 않을 수 있게
+
+손진관 형제님
+1.체력 관리 잘 할 수 있게
+2. 현명하게 재정을 사용하고 물질적으로 우선순위되지 않고 하나님이 우선순위가 될 수 있게
+3. 왼쪽 아래 어금니 신경치료 받았는데 치료 끝날 때까지 잘될 수 있게
+4. 친할머니께서 코로나 걸리셨는데 악화되지 않고 약 잘 먹고 건강하게 회복될 수 있게
+5. 돌아오는 주일에 여동생 생일인데 가족들과 좋은 시간 보낼 수 있게
+6. 직장일을 하면서 무료한 일상을 보내고 있는데 감사한 일을 찾아가며 게으르지 않을 수 있게
+
+최현진 자매님
+1. 체력관리(운동) 잘할 수 있게
+2. 9월도 말씀(바이블 타임)과 기도로 승리할 수 있게
+3. 현명하게 재정을 사용하고 물질적으로 우선순위되지 않고 하나님이 우선순위가 될 수 있게
+4. 어학시험(토스) 준비로 인강을 보게 될텐데 끝까지 승리할 수 있게
+5. 말씀의 삶 시작하게 되는데 끝까지 승리하고 성경도 통독할 수 있게
+
+박지은 자매님
+1. 자격증(컴활)과 어학시험(토스) 공부 열심히 해낼 수 있게
+2. 재정 관리를 현명하게 할 수 있게
+3. 계획된 삶을 살아갈 수 있게
+4. 아동부 생명의 삶 하고있는데 끝까지 승리하며 많은 것을 배울 수 있게
+5. 다시한번 운동을 시작할 때 꾸준히 할 수 있게
+6. 말씀, 기도, 찬양이 삶 가운데 가까이 할 수 있게
+7. 하반기 공채 시즌인데 취업준비 잘할 수 있게
+8. 피부 트러블이 조금씩 올라오는데 나아질 수 있게
+9. 유치부 서기 사역을 맡게 되는데 기쁨으로 잘 감당할 수 있게
+
+권해빈 자매님
+1. 지금 하고 있는 일에 기도하며 하나님의 뜻에 순종하며 살아갈 수 있게
+2. 할머니랑 동생 일오가 허리 시술을 받았는데 빠르게 회복될 수 있게
+
+이종민 형제님
+1.
+
+정석교 형제님
+1.
+
+강다현 자매님
+1. 학생회 회의를 시작으로 2학기 일정을 시작하는데 잘 감당할 수 있게
+
+윤강현 형제님
+1. 토익 공부 열심히 할 수 있는 의지를 가질 수 있게
+2. 내년 대학원 진학을 위한 학업 계획서, 면접 준비 잘할 수 있게
+
+</pre>
+<footer>
+    <p>© 2024 인도네시아 목장. All rights reserved.</p>
+    <p><a href="#privacy">개인정보 보호정책</a> | <a href="#terms">이용 약관</a></p>
+</footer>
+</body>
+</html>
