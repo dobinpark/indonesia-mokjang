@@ -1,10 +1,10 @@
 # 워크플로의 이름 지정
-name: CICD
+name: CI/CD
 
-# 원크플로가 시작될 조건 지정
+# 워크플로가 시작될 조건 지정
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: 'corretto'
           java-version: '17'
 
       - name: Grant execute permission for gradlew
@@ -23,3 +23,26 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew clean build
+
+      # 현재 시간 가져오기
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
+      # 배포용 패키지 경로 저장
+      - name: Set artifact # Set '환경 변수에서 찾을 값'
+        run: echo "artifact=$(ls ./build/libs)" >> $GITHUB_ENV
+
+      # 빈스토크 배포
+      - name: Beanstalk Deploy
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: spring-boot-developer
+          environment_name: SpringBootDeveloper-env
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          region: ap-northeast-2
+          deployment_package: ./build/libs/${{env.artifact}}
